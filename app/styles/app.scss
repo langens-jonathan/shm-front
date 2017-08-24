@@ -1,0 +1,51 @@
+@import 'ember-paper';
+
+.md-whiteframe-z2 {
+  background-color: #31263E;
+  height: 100vh;
+}
+
+.md-sidenav-header {
+  background-color: #221E22;
+  color: #FDFFFC;
+}
+
+.md-button {
+  background-color: #44355B;
+  height: 55px;
+  margin: 0px;
+  margin-top: 5px;
+  color: #E8E9F3;
+  width: 100%;
+  padding: 0px;
+}
+
+.inner-button {
+  float: left;
+  margin-left: 10px;
+}
+
+.inner-button md-icon.md-default-theme, md-icon {
+  margin-right: 15px;
+}
+
+.content-container {
+  padding: 15px;
+}
+
+.md-sidenav-button {
+  background-color: #44355B;
+  height: 25px;
+  margin-top: 5px;
+}
+
+.md-sidenav-button a {
+  text-decoration: none;
+  color: #E8E9F3;
+  margin-left: 5px;
+  width: 100%;
+}
+
+md-content.md-default-theme, md-content {
+  color: #E8E9F3;
+}

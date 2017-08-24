@@ -1,5 +1,35 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#paper-sidenav-container class="inner-sidenav"}}
 
-{{outlet}}
+  {{#paper-sidenav
+    class="md-whiteframe-z2"
+    name="side-menu"
+    open=leftSideBarOpen2
+    lockedOpen=true
+    onToggle=(action (mut leftSideBarOpen2))}}
+    {{#paper-toolbar as |toolbar|}}
+      {{#paper-toolbar-tools class="md-sidenav-header" }}<div style="margin:auto;">{{paper-icon "domain"}}</div>{{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+      {{#if loggedIn}}
+        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "dashboard"}}DASHBOARD</div>{{/paper-button}}
+        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "terrain"}}MAP</div>{{/paper-button}}
+        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "timelapse"}}CALENDAR</div>{{/paper-button}}
+        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "timeline"}}FINANCIAL</div>{{/paper-button}}
+        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "done"}}DOCUMENTS</div>{{/paper-button}}
+        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "money"}}PAYMENTS</div>{{/paper-button}}
+      {{/if}}
+    <div style="position:fixed; bottom:0px; width:100%;">
+    {{#if loggedIn}}
+        {{#paper-button onClick=(action "logOut")}}<div class="inner-button">{{paper-icon "lock"}}LOG OUT</div>{{/paper-button}}	
+    {{else}}
+        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "lock open"}}LOG IN</div>{{/paper-button}}
+    {{/if}}
+    </div>
+  {{/paper-sidenav}}
+
+  <div class="content-container">
+    {{#if loggedIn}}
+      {{outlet}}
+    {{/if}}
+  </div>
+
+{{/paper-sidenav-container}}

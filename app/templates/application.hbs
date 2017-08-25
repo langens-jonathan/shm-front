@@ -13,10 +13,15 @@
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "dashboard"}}DASHBOARD</div>{{/paper-button}}
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "terrain"}}MAP</div>{{/paper-button}}
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "timelapse"}}CALENDAR</div>{{/paper-button}}
+        {{#paper-button onClick=(action "gotoRoute" "tenants")}}<div class="inner-button">{{paper-icon "account box"}}TENANTS</div>{{/paper-button}}
+        {{#paper-button onClick=(action "gotoRoute" "contracts")}}<div class="inner-button">{{paper-icon "reorder"}}CONTRACTS</div>{{/paper-button}}
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "timeline"}}FINANCIAL</div>{{/paper-button}}
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "done"}}DOCUMENTS</div>{{/paper-button}}
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "money"}}PAYMENTS</div>{{/paper-button}}
+
+
       {{/if}}
+      
     <div style="position:fixed; bottom:0px; width:100%;">
     {{#if loggedIn}}
         {{#paper-button onClick=(action "logOut")}}<div class="inner-button">{{paper-icon "lock"}}LOG OUT</div>{{/paper-button}}	
@@ -27,8 +32,28 @@
   {{/paper-sidenav}}
 
   <div class="content-container">
+    {{#if displayComments}}
+         <div id="comments-container">
+	   {{#each comments as |comment|}}
+	      <div class="comment">
+	        {{comment.content}}
+	      </div>
+	   {{/each}}
+   
+           {{paper-input textarea=true block=true label="" maxlength=150 passThru=(hash rows=5 maxRows=5)
+  value=newComment onChange=(action (mut newComment)) class="comment" 
+  onKeyDown=(action "newCommentKeyDown")}}
+        </div>
+    {{/if}}
     {{#if loggedIn}}
-      {{outlet}}
+      <div id="header-bar">
+        <div style="float:right; color:white;">
+          {{#paper-button onClick=(action "toggleComment") iconButton=true}}{{paper-icon "comment"}}{{/paper-button}}
+	</div>
+      </div>
+      <div id="inner-content-container">
+        {{outlet}}
+      </div>
     {{/if}}
   </div>
 

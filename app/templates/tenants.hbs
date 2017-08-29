@@ -1,2 +1,27 @@
-<h1>Tenants</h1>
 {{outlet}}
+
+{{#data-table content=model filter=filter sort=sort page=page size=size isLoading=isLoadingModel as |t|}}
+    {{#t.menu as |menu|}}
+        {{#menu.general}}
+            {{#paper-button  accent=true noInk=true}}Export{{/paper-button}}
+            {{#paper-button  accent=true noInk=true}}Print{{/paper-button}}
+        {{/menu.general}}
+        {{#menu.selected as |selection datatable|}}
+            {{#paper-button  accent=true noInk=true}}Delete{{/paper-button}}
+        {{/menu.selected}}
+    {{/t.menu}}
+    {{#t.content as |c|}}
+        {{#c.header}}
+            {{th-sortable field='name' currentSorting=sort label='Name'}}
+            {{th-sortable field='address' currentSorting=sort label='Address'}}
+            {{th-sortable field='tel' currentSorting=sort label='Tel'}}
+            {{th-sortable field='email' currentSorting=sort label='email'}}
+        {{/c.header}}
+        {{#c.body as |row|}}
+            <td {{action 'rowClicked' row}}>{{row.name}}</td>
+                <td {{action 'rowClicked' row}}>{{row.address}}</td>
+                <td {{action 'rowClicked' row}}>{{row.tel}}</td>
+                <td {{action 'rowClicked' row}}>{{row.email}}</td>
+            {{/c.body}}
+    {{/t.content}}
+{{/data-table}}

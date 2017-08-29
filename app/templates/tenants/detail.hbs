@@ -1,0 +1,51 @@
+<h1>{{model.name}}</h1>
+
+<h2>Tenant Details</h2>
+{{#paper-form onSubmit=(action "updateUser") as |form|}}
+    <div class="layout-row">
+        <div class="layout-column flex-50">
+            {{form.input label="Name" value=model.name onChange=(action (mut model.name)) required=true}}
+            {{form.input label="Address" value=model.address onChange=(action (mut model.address))}}
+            {{form.input label="Tel" value=model.tel onChange=(action (mut model.tel))}}
+            {{form.input label="email" value=model.email onChange=(action (mut model.email))}}
+        </div>
+    </div>
+    <div class="layout-row">
+        {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+    </div>
+{{/paper-form}}
+
+<h2>Contracts</h2>
+<table class="data-table" >
+    <thead>
+        <tr><td>Start Date</td><td>End Date</td><td>Deposit</td><td>Monthly Rent</td><td>Room</td><td>PDF</td></tr>
+    </thead>
+    <tbody>
+{{#each model.contracts as |contract|}}
+    <tr>
+            <td>{{contract.startDate}}</td>
+            <td>{{contract.endDate}}</td>
+            <td>{{contract.deposit}}</td>
+            <td>{{contract.mensuality}}</td>
+            <td>{{contract.room.title}}</td>
+            <td>{{contract.document}}</td>
+    </tr>
+{{/each}}
+    </tbody>
+</table>
+
+<h2>Payments</h2>
+<table class="data-table" >
+    <thead>
+        <tr><td>amount</td></tr>
+    </thead>
+    <tbody>
+        {{#each model.payments as |payment|}}
+            <tr>
+                <td>{{payment.amount}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{outlet}}

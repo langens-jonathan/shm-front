@@ -9,5 +9,5 @@ export default DS.Model.extend({
     tenant: DS.belongsTo('tenant', { inverse: 'contracts' }),
     room: DS.belongsTo('room', { inverse: 'contracts' }),
     debts: DS.hasMany('debt'),
-    documents: DS.has<any('document')
+    documents: DS.hasMany('document')
 });

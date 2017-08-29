@@ -1,5 +1,26 @@
 @import 'ember-paper';
 
+body {
+    background-color: #221E22;
+}
+
+.md-button.md-default-theme.md-primary.md-raised {
+    background-color: #44355B;
+}
+
+.md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
+    background-color: #BDD9BF;
+}
+
+
+.md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+    background-color: #FF6F38;
+}
+
+.md-button.md-default-theme.md-accent, .md-button.md-accent {
+    color: #E8E9F3;
+}
+
 .md-whiteframe-z2 {
   background-color: #31263E;
   height: 100vh;
@@ -27,6 +48,32 @@
 
 .inner-button md-icon.md-default-theme, md-icon {
   margin-right: 15px;
+}
+
+.data-table {
+  width: 70%;
+  text-align: left;
+}
+
+.data-table td {
+  height: 40px;
+}
+
+.data-table thead tr {
+  background-color: #F06449;
+  color: #FDFFFC;
+  height: 42px;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #D3BCCC;
+}
+
+.data-table tbody tr:nth-child(odd) {
+}
+
+.data-table tbody tr:hover {
+  background-color: #BDD9BF;
 }
 
 .content-container {
@@ -85,6 +132,11 @@ md-content.md-default-theme, md-content {
   margin: 0;
   padding: 0;
   padding-top: 15px;
+}
+
+#header-bar h1 {
+  display: inline;
+  margin-left: 20px;
 }
 
 .md-comments-nav {

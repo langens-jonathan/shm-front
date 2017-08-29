@@ -10,42 +10,44 @@ export default Ember.Service.extend({
     comments: [],
 
     updateComments: Ember.observer('currentContext', function() {
-	Ember.get(this, 'recalculateComments')(this);
+	      Ember.get(this, 'recalculateComments')(this);
     }),
 
     recalculateComments(__this=this) {
-	var store = Ember.get(__this, 'store');
-	var currentContext = Ember.get(__this, 'currentContext');
+	      var store = Ember.get(__this, 'store');
+	      var currentContext = Ember.get(__this, 'currentContext');
 
-	if(currentContext === undefined) {
-	    return;
-	}
+	      if(currentContext === undefined) {
+	          return;
+	      }
 
-	var commentsPromise = store.query('comment', {
-	    filter: {
-		context: currentContext
-	    }
-	});
+	      var commentsPromise = store.query('comment', {
+	          filter: {
+		            context: currentContext
+	          }
+	      });
 
-	commentsPromise.then((function(_this) {
-	    return function(results) {
-		Ember.set(_this, 'comments', results);
-		Ember.Logger.log(results);
-	    };
-	})(__this));
+	      commentsPromise.then((function(_this) {
+	          return function(results) {
+		            Ember.set(_this, 'comments', results);
+	          };
+	      })(__this));
     },
 
     addComment(comment, _this=this) {
-	var context = Ember.get(_this, 'currentContext');
-	var store = Ember.get(_this, 'store');
+        if(comment.trim() === "") {
+            return;
+        }
+	      var context = Ember.get(_this, 'currentContext');
+	      var store = Ember.get(_this, 'store');
 
-	var newComment = store.createRecord('comment', {
-	    content: comment,
-	    context: context
-	});
+	      var newComment = store.createRecord('comment', {
+	          content: comment,
+	          context: context
+	      });
 
-	newComment.save().then(function(result) {
-	    Ember.Logger.log(result);
-	});
+	      newComment.save().then(function(result) {
+	          Ember.Logger.log(result);
+	      });
     }
 });

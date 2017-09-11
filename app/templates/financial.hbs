@@ -1,0 +1,16 @@
+{{#paper-select
+   disabled=false
+   label="Period"
+   options=periods
+   selected=periodSelected
+   onChange=(action (mut periodSelected))
+   as |period|
+}}
+    {{period}}
+{{/paper-select}}
+
+Total Earned in this period: {{totalEarned}}
+
+{{simple-bar-chart dataArray=dataArrayPruned title=title width=795}}
+
+{{outlet}}

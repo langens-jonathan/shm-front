@@ -7,10 +7,12 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-    this.route('tenants', function() {
-	this.route('detail', { path: '/:tenant_id'});
-    });
-    this.route('contracts');
+  this.route('tenants', function() {
+  this.route('detail', { path: '/:tenant_id'});
+  });
+  this.route('contracts');
+  this.route('financial');
+  this.route('payments');
 });
 
 export default Router;

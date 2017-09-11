@@ -1,0 +1,42 @@
+<h1>Add new payment</h1>
+{{#paper-form OnSubmit=(action "addPayment") as |form|}}
+    <div class="layout-row">
+        <div class="layout-column flex-50">
+            {{form.input label="Amount" value=amount onChange=(action (mut amount)) required=true}}
+            {{form.input label="Date" value=date onChange=(action (mut date))}}
+        </div>
+        <div class="layout-column flex-50">
+            {{#form.autocomplete
+               required=true
+               options=tenants
+               selected=selectedTenant
+               searchField="name"
+               labelPath="name"
+               label="Tenant"
+               loadingMessage="Searching tenants..."
+               noMatchesMessage="Oops this tenant doesn't exist."
+               onSelectionChange=(action (mut selectedTenant)) as |tenant select|}}
+                {{paper-autocomplete-highlight
+                  label=tenant.name
+                  searchText=select.searchText
+                  flags="i"}}
+            {{/form.autocomplete}}
+        </div>
+    </div>
+    <div class="layout-row">
+        {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+    </div>
+{{/paper-form}}
+
+<table id="debts-table" >
+            <tr id="debts-table-heading"><td>due</td><td>amount</td><td>tenant</td><td>ok</td></tr>
+
+        {{#each model as |debt|}}
+            <tr class="debts-table-row-fulfilled" ><td>{{debt.due}}</td>
+                <td>{{debt.amount}}</td>
+                <td>{{debt.contract.tenant.name}}</td>
+                <td>{{debt.fulfilled}}</td>
+            </tr>
+        {{/each}}
+    </table>
+

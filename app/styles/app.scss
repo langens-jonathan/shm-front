@@ -8,6 +8,44 @@ body {
     background-color: #44355B;
 }
 
+.simple-bar-chart-pane {
+    background-color: #EDE0FF;
+}
+
+.simple-bar-chart-bar {
+    fill: #4CB944;
+}
+
+.simple-bar-chart-bar:hover {
+    fill: #098B8C;
+}
+
+#debts-table {
+    background-color: #FDFFFC;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#debts-table-heading {
+    background-color: #BDD9BF;
+}
+
+.debts-table-row-unfulfilled {
+    background-color: #FF6F38;
+    color: #E8D7F1;
+    font-weight: bold;
+}
+
+.debts-table-row-unfulfilled:hover {
+    background-color: #BDD9BF;
+    color: #31263E;
+}
+
+.debts-table-row-fulfilled {
+    background-color: #098B8C;
+}
+
 .md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
     background-color: #BDD9BF;
 }

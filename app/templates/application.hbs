@@ -15,9 +15,9 @@
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "timelapse"}}CALENDAR</div>{{/paper-button}}
         {{#paper-button onClick=(action "gotoRoute" "tenants" "Tenants")}}<div class="inner-button">{{paper-icon "account box"}}TENANTS</div>{{/paper-button}}
         {{#paper-button onClick=(action "gotoRoute" "contracts" "Contracts")}}<div class="inner-button">{{paper-icon "reorder"}}CONTRACTS</div>{{/paper-button}}
-        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "timeline"}}FINANCIAL</div>{{/paper-button}}
+        {{#paper-button onClick=(action "gotoRoute" "financial" "Financial")}}<div class="inner-button">{{paper-icon "timeline"}}FINANCIAL</div>{{/paper-button}}
         {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "done"}}DOCUMENTS</div>{{/paper-button}}
-        {{#paper-button onClick=(action "logIn")}}<div class="inner-button">{{paper-icon "money"}}PAYMENTS</div>{{/paper-button}}
+        {{#paper-button onClick=(action "gotoRoute" "payments" "Payments")}}<div class="inner-button">{{paper-icon "money"}}PAYMENTS</div>{{/paper-button}}
 
 
       {{/if}}
